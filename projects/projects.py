@@ -1,5 +1,5 @@
 # type:ignore
-from flask import Blueprint,request,jsonify
+from flask import Blueprint,request,jsonify,redirect
 import sys
 sys.path.append("..")
 from main import db,uuid
@@ -42,11 +42,12 @@ def createProject():
 def updateProject(projectId):
     try:
         data=request.json
-        project=db.projects.find_one_and_replace({"_id":projectId},{data})
-
-        return jsonify({"msg":"project updated successfully","project":project})
+        project=db.projects.find_one_and_replace({"_id":projectId},data)
+    
+        # return jsonify({"msg":"project updated successfully","project":project})
+        return redirect (f"/projects/{projectId}")
     except:
-        return {"msg":"failed to update"},401
+        return {"msg":"failed to update"},406
 
 @projects.patch("/<projectId>")
 @authorization
@@ -54,9 +55,10 @@ def updateProjectPin(projectId):
     try:
         data=request.json
         pin=data['pin']
-        project=db.projects.find_one_and_update({"_id":projectId},{"$set":{f'pins.{pin}.value':data['value'] }})
+        db.projects.find_one_and_update({"_id":projectId},{"$set":{f'pins.{pin}.value':data['value'] }})
 
-        return jsonify({"project":project,"msg":"updated successfully"}),200
+        # return jsonify({"project":project,"msg":"updated successfully"}),200
+        return redirect (f"/projects/{projectId}")
     except:
         return {"msg":"failed to update project"},406
 

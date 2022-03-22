@@ -12,5 +12,5 @@ def index():
     return {"message":"app running successfully"}
 
 
-if __name__=="__main__":
-    app.run(debug=True) 
+# if __name__=="__main_ _":
+#     app.run(debug=True) 

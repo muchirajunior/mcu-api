@@ -119,7 +119,7 @@ def createUserProject(userId):
 
 @users.patch("/<userId>/projects/<projectId>")
 @jwt_required()
-def updateProjectPin(userId, projectId):
+def updateUserProjectPin(userId, projectId):
     try:
         data=request.json
         pin=data['pin']
@@ -128,11 +128,11 @@ def updateProjectPin(userId, projectId):
             return {"msg":"failed to update, unauthorized to update"},406
 
         db.projects.update_one({"_id":projectId},{"$set":{f'pins.{pin}.value':data['value'] }})
-
-        # return jsonify({"project":project,"msg":"updated successfully"}),200
-        return redirect (f"/projects/{projectId}")
-    except:
-        return {"msg":"failed to update project"},406
+        project=db.projects.find_one({'_id':projectId})
+        return jsonify({"project":project,"msg":"updated successfully"}),200
+        
+    except Exception as e:
+        return jsonify({"msg":"failed to update project","error":str(e)}),406
 
 @users.delete("/<userId>/projects/<projectId>")
 @jwt_required()

@@ -51,7 +51,7 @@ def loginUser():
         if bcrypt.check_password_hash(user['password'].encode('utf-8'),data['password']) :
             user=user.pop('password')
             token=create_access_token(identity=user)
-            return jsonify({"msg":"login successful","token":token}),200
+            return jsonify({"msg":"login successful","user":user,"token":token}),200
 
         else:
             return {"msg":"login failed, incorrect password"},406

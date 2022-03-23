@@ -11,7 +11,7 @@ app=Flask(__name__)
 
 app.config['MONGO_URI']="mongodb://junior-mongo:xse7Nsg0qgsOZwI86Yoe5NX77CBhftipW8VCDd7RHFzJeRPkE4buU8lw3tbRTQs2fkROnmk21r7NQcZbg4nNlg==@junior-mongo.mongo.cosmos.azure.com:10255/mcuapi?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@junior-mongo@"
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_KEY")
-app.config["JWT_ACCESS_TOKEN_EXPIRES"]=timedelta(minutes=40)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"]=timedelta(minutes=10)
 app.config["SECRET_KEY"]=os.getenv("API_KEY")
 
 jwt = JWTManager(app)

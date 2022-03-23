@@ -35,9 +35,8 @@ def createUser():
         data['_id']=uuid()
         data['password']=bcrypt.generate_password_hash(data['password'],10).decode("utf-8") 
         db.users.insert_one(data)
-        data.pop("password")
 
-        return jsonify({"msg":"created user successfully","user":data}),200
+        return jsonify({"msg":"created user successfully"}),200
     except Exception as e:
         return {"msg":"failed to register user","error":str(e)},406
 
@@ -51,7 +50,7 @@ def loginUser():
         if bcrypt.check_password_hash(user['password'].encode('utf-8'),data['password']) :
             user=user.pop('password')
             token=create_access_token(identity=user)
-            return jsonify({"msg":"login successful","token":token}),200
+            return jsonify({"msg":"login successful","user":user,"token":token}),200
 
         else:
             return {"msg":"login failed, incorrect password"},406

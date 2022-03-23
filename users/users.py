@@ -49,13 +49,12 @@ def loginUser():
         if user == None:
             return {"msg":"login failed, username does not exist"},406
         if bcrypt.check_password_hash(user['password'].encode('utf-8'),data['password']) :
-            user=user.pop('password')
+            user.pop("password")
             token=create_access_token(identity=user)
             return jsonify({"msg":"login successful","user":user,"token":token}),200
 
         else:
             return {"msg":"login failed, incorrect password"},406
-
     except Exception as e:
         return jsonify({ "msg":"login failed","error":str(e)}),406
 

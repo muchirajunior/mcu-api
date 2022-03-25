@@ -5,7 +5,8 @@ from shortuuid import uuid
 from flask_jwt_extended import create_access_token, get_jwt_identity,jwt_required,JWTManager
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
-import os
+from flask_cors import CORS
+# import os
 
 app=Flask(__name__)
 
@@ -20,3 +21,4 @@ mongoClient=PyMongo(app)
 db=mongoClient.db
 
 bcrypt=Bcrypt(app)
+CORS(app)

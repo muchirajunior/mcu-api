@@ -42,10 +42,11 @@ def createProject():
 def updateProject(projectId):
     try:
         data=request.json
-        project=db.projects.find_one_and_replace({"_id":projectId},data)
+        db.projects.find_one_and_replace({"_id":projectId},data)
+        project=projects.find_one({"_id":projectId})
     
-        # return jsonify({"msg":"project updated successfully","project":project})
-        return redirect (f"/projects/{projectId}")
+        return jsonify(project)
+        # return redirect (f"/projects/{projectId}")
     except:
         return {"msg":"failed to update"},406
 

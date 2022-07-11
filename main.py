@@ -10,7 +10,7 @@ from flask_cors import CORS
 
 app=Flask(__name__)
 
-app.config['MONGO_URI']="mongodb://junior-mongo:xse7Nsg0qgsOZwI86Yoe5NX77CBhftipW8VCDd7RHFzJeRPkE4buU8lw3tbRTQs2fkROnmk21r7NQcZbg4nNlg==@junior-mongo.mongo.cosmos.azure.com:10255/mcuapi?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@junior-mongo@"
+app.config['MONGO_URI']="mongodb://muchira-mongodb:vyWp23h7oJCplSzqx3CzsQqjLqp1g0rRKi38cUMX0Ul818LnuoUBlvoKP4cCqIjJljh0WWBRniThYdliRiiFEQ==@muchira-mongodb.mongo.cosmos.azure.com:10255/mcudb?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@muchira-mongodb@"
 app.config["JWT_SECRET_KEY"] = "FJVDJH93623FDNJHGS537KDGN6@#$%JJ"
 app.config["JWT_ACCESS_TOKEN_EXPIRES"]=timedelta(days=100)
 app.config["SECRET_KEY"]="fbudue730fbsjk78bnwo"

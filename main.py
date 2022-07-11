@@ -1,4 +1,3 @@
-# type:ignore
 from flask import Flask,request
 from flask_pymongo import PyMongo
 from shortuuid import uuid
@@ -6,7 +5,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity,jwt_require
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
 from flask_cors import CORS
-# import os
+
 
 app=Flask(__name__)
 

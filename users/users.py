@@ -1,4 +1,3 @@
-# type:ignore
 import sys
 from flask import Blueprint,request,redirect,jsonify
 sys.path.append("..")

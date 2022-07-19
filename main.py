@@ -9,10 +9,10 @@ import os
 
 app=Flask(__name__)
 
-app.config['MONGO_URI']="mongodb://junior-mongo:xse7Nsg0qgsOZwI86Yoe5NX77CBhftipW8VCDd7RHFzJeRPkE4buU8lw3tbRTQs2fkROnmk21r7NQcZbg4nNlg==@junior-mongo.mongo.cosmos.azure.com:10255/mcuapi?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@junior-mongo@"
-app.config["JWT_SECRET_KEY"] = "FJVDJH93623FDNJHGS537KDGN6@#$%JJ"
+app.config['MONGO_URI']="mongodb://******"
+app.config["JWT_SECRET_KEY"] = "***********"
 app.config["JWT_ACCESS_TOKEN_EXPIRES"]=timedelta(minutes=10)
-app.config["SECRET_KEY"]="fbudue730fbsjk78bnwo"
+app.config["SECRET_KEY"]="**************"
 
 jwt = JWTManager(app)
 
